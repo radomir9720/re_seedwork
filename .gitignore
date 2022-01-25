@@ -1,9 +1,3 @@
-# Generated code
-**/*.g.dart
-**/*.gr.dart
-**/*.config.dart
-**/*.freezed.dart
-
 # Miscellaneous
 *.class
 *.log
@@ -14,45 +8,21 @@
 .buildlog/
 .history
 .svn/
-
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
 .idea/
-
 # Visual Studio Code related
 .vscode/
-
 # Flutter/Dart/Pub related
 **/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/*
-.flutter-plugins
-.flutter-plugins-dependencies
+.dart_tool/
 .packages
 .pub-cache/
 .pub/
 /build/
 /coverage/
-
-# Web related
-lib/generated_plugin_registrant.dart
-
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
-
-# fvm
-.fvm/*
-!.fvm/fvm_config.json
-
-# fastlane
-/fastlane/
-**/fastlane/README.md
-**/fastlane/report.xml
-**/fastlane/Preview.html
-**/fastlane/screenshots
-**/fastlane/test_output
+# Omit commiting pubspec.lock for library packages:
+# https://dart.dev/guides/libraries/private-files#pubspeclock
+pubspec.lock
