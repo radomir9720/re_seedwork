@@ -1,7 +1,7 @@
 name: re_seedwork
 description: Reusable base classes and interfaces.
 
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: ">=2.15.1 <3.0.0"
