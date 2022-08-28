@@ -1,22 +1,23 @@
 name: re_seedwork
 description: Reusable base classes and interfaces.
 
-version: 0.1.1
+version: 0.1.2
 
 environment:
-  sdk: ">=2.15.1 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  equatable: ^2.0.3
-  bloc: ^8.0.2
+  bloc: ^8.1.0
+  meta: ^1.7.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.1
 
  
