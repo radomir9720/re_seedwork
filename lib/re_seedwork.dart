@@ -26,6 +26,3 @@ export 'src/stores/optional_value_store.dart';
 export 'src/utils/lock.dart';
 export 'src/utils/debouncer.dart';
 export 'src/utils/throttler.dart';
-
-/// widgets
-export 'src/widgets/nil.dart';
