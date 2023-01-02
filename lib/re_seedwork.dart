@@ -7,6 +7,7 @@ export 'src/extensions/list_extensions.dart';
 export 'src/extensions/string_extensions.dart';
 
 // bloc
+export 'src/bloc/bloc_event_handler_mixin.dart';
 export 'src/bloc/effect_bloc_mixin.dart';
 export 'src/bloc/consumer_bloc_mixin.dart';
 
