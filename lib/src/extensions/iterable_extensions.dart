@@ -1,4 +1,4 @@
-extension ListExtension<T> on List<T> {
+extension DivideIterableExtension<T> on Iterable<T> {
   Iterable<T> divideBy(T divider) sync* {
     // ignore: no_leading_underscores_for_local_identifiers
     final _iterator = iterator;

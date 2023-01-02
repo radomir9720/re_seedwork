@@ -4,9 +4,9 @@ library re_seedwork;
 
 /// extensions
 export 'src/extensions/map_extensions.dart';
-export 'src/extensions/list_extensions.dart';
 export 'src/extensions/string_extensions.dart';
 export 'src/extensions/object_extensions.dart';
+export 'src/extensions/iterable_extensions.dart';
 
 // bloc
 export 'src/bloc/effect_bloc_mixin.dart';
