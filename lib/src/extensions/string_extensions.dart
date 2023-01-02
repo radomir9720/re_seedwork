@@ -5,3 +5,19 @@ extension CapitalizeExtension on String {
     return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }
+
+extension SplitByIndexesExtension on String {
+  List<String> splitByIndexes(List<int> indexes) {
+    if (isEmpty) return [];
+    var index = 0;
+    final parts = <String>[];
+    for (final i in indexes) {
+      if (i == 0) continue;
+      if (i == length) continue;
+      parts.add(substring(index, i));
+      index = i;
+    }
+    parts.add(substring(index, length));
+    return parts;
+  }
+}
