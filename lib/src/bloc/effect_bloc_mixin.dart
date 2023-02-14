@@ -21,14 +21,12 @@ class _FireEffectEvent<T extends Object> implements EffectEvent {
   const _FireEffectEvent(this.value);
 }
 
-class _DefaultBlocObserver extends BlocObserver {}
-
 mixin EffectBlocMixin<Event extends EffectEvent, State> on Bloc<Event, State> {
   @protected
   static final _subscriptions = Expando<List<StreamSubscription<Object?>>>();
 
   @protected
-  static final _defaultBlocObserver = _DefaultBlocObserver();
+  static final _defaultBlocObserver = Bloc.observer;
 
   @override
   void onEvent(covariant EffectEvent event) {
