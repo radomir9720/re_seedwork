@@ -21,3 +21,10 @@ extension SplitByIndexesExtension on String {
     return parts;
   }
 }
+
+extension OnlyDigitsExtension on String {
+  /// Returns only digits from current string
+  String get onlyDigits {
+    return replaceAll(RegExp(r'\D'), '');
+  }
+}
