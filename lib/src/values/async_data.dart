@@ -63,6 +63,20 @@ abstract class AsyncData<P, E extends Object> extends Equatable {
     R Function(P payload, E? error)? failure,
   });
 
+  AsyncData<P, E> copyWith({P? payload, E? error}) {
+    return when(
+      initial: (p) => AsyncData.initial(payload ?? p),
+      loading: (p) => AsyncData.loading(payload ?? p),
+      success: (p) => AsyncData.success(payload ?? p),
+      failure: (p, e) {
+        return AsyncData.failure(
+          payload ?? this.payload,
+          error ?? e,
+        );
+      },
+    );
+  }
+
   @literal
   const factory AsyncData.initial(P payload) = _InitialState<P, E>;
 

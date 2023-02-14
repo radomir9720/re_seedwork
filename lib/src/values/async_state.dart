@@ -56,6 +56,15 @@ abstract class AsyncState<E extends Object> {
     R Function(E? error)? failure,
   });
 
+  AsyncState<E> copyWith({E? error}) {
+    return when(
+      initial: () => const AsyncState.initial(),
+      loading: () => const AsyncState.loading(),
+      success: () => const AsyncState.success(),
+      failure: (e) => AsyncState.failure(error ?? e),
+    );
+  }
+
   @literal
   const factory AsyncState.initial() = _InitialState<E>;
 
