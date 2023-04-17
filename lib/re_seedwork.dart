@@ -10,6 +10,7 @@ export 'src/extensions/iterable_extensions.dart';
 export 'src/extensions/date_time_extensions.dart';
 
 // bloc
+export 'src/bloc/bloc_logger_mixin.dart';
 export 'src/bloc/effect_bloc_mixin.dart';
 export 'src/bloc/consumer_bloc_mixin.dart';
 export 'src/bloc/bloc_event_handler_mixin.dart';
