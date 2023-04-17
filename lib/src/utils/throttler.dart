@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
 
 class Throttler {
   @visibleForTesting
@@ -14,7 +13,7 @@ class Throttler {
 
   Throttler({this.milliseconds = kDefaultDelay});
 
-  void run(VoidCallback action) {
+  void run(void Function() action) {
     if (timer?.isActive ?? false) return;
 
     timer?.cancel();
