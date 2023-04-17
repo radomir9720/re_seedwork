@@ -18,6 +18,8 @@ abstract class Optional<V extends Object> {
     required R Function(V value) presented,
   });
 
+  V? get toNullable;
+
   @literal
   const factory Optional.undefined() = _OptionalUndefined<V>;
 
@@ -43,6 +45,9 @@ class _OptionalUndefined<V extends Object> extends Equatable
   }
 
   @override
+  V? get toNullable => null;
+
+  @override
   List<Object?> get props => [];
 }
 
@@ -65,6 +70,9 @@ class _OptionalPresented<V extends Object> extends Equatable
   }) {
     return presented(value);
   }
+
+  @override
+  V? get toNullable => value;
 
   @override
   List<Object?> get props => [isPresent, value];
