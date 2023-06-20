@@ -8,7 +8,7 @@ mixin BlocEventHandlerMixin<Event extends EffectEvent, State>
   void handleEvent<E extends Event, ActionResult>({
     required StateBuilder<State> inLoading,
     required StateBuilder<State> inFailure,
-    required Future<ActionResult> Function() action,
+    required Future<ActionResult> Function(Event event) action,
     required Future<State> Function(ActionResult actionResult) onActionResult,
   }) {
     return on<E>(
@@ -16,7 +16,7 @@ mixin BlocEventHandlerMixin<Event extends EffectEvent, State>
         emit(inLoading());
 
         try {
-          final res = await action();
+          final res = await action(event);
 
           emit(await onActionResult(res));
         } on Object catch (_) {
