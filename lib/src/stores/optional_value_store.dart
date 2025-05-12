@@ -122,9 +122,7 @@ abstract class OptionalValueStoreSink<T extends Object>
 /// InMemoryOptionalValueStore
 class InMemoryOptionalValueStore<T extends Object>
     extends OptionalValueStoreSink<T> {
-  InMemoryOptionalValueStore([
-    T? value,
-  ]) : super(value);
+  InMemoryOptionalValueStore([super.value]);
 
   @override
   @nonVirtual

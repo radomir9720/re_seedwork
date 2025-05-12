@@ -97,7 +97,7 @@ abstract class AsyncData<P, E extends Object> extends Equatable {
 @immutable
 class _InitialState<P, E extends Object> extends AsyncData<P, E> {
   @literal
-  const _InitialState(P payload) : super._(payload);
+  const _InitialState(super.payload) : super._();
 
   @override
   @nonVirtual
@@ -129,7 +129,7 @@ class _InitialState<P, E extends Object> extends AsyncData<P, E> {
 @immutable
 class _LoadingState<P, E extends Object> extends AsyncData<P, E> {
   @literal
-  const _LoadingState(P payload) : super._(payload);
+  const _LoadingState(super.payload) : super._();
 
   @override
   @nonVirtual
@@ -161,7 +161,7 @@ class _LoadingState<P, E extends Object> extends AsyncData<P, E> {
 @immutable
 class _SuccessState<P, E extends Object> extends AsyncData<P, E> {
   @literal
-  const _SuccessState(P payload) : super._(payload);
+  const _SuccessState(super.payload) : super._();
 
   @override
   @nonVirtual
@@ -196,7 +196,7 @@ class _FailureState<P, E extends Object> extends AsyncData<P, E> {
   final E? error;
 
   @literal
-  const _FailureState(P payload, [this.error]) : super._(payload);
+  const _FailureState(super.payload, [this.error]) : super._();
 
   @override
   @nonVirtual
