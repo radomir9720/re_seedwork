@@ -4,10 +4,10 @@ description: Reusable base classes and interfaces.
 version: 1.0.0
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.17.0 <4.0.0"
 
 dependencies:
-  bloc: ^8.1.0
+  bloc: ^9.0.0
   meta: ^1.7.0
   equatable: ^2.0.5
 
@@ -15,6 +15,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.1
+  flutter_lints: ^5.0.0
 
  
