@@ -102,9 +102,7 @@ abstract class ValueStoreSink<T> extends Stream<T>
 
 /// InMemoryValueStore
 class InMemoryValueStore<T> extends ValueStoreSink<T> {
-  InMemoryValueStore(
-    T value,
-  ) : super(value);
+  InMemoryValueStore(super.value);
 
   @override
   @nonVirtual

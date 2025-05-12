@@ -132,9 +132,7 @@ abstract class KeyValueStoreSink<K, V> extends Stream<UnmodifiableMapView<K, V>>
 
 // InMemoryKeyValueStore
 class InMemoryKeyValueStore<K, V> extends KeyValueStoreSink<K, V> {
-  InMemoryKeyValueStore([
-    Map<K, V> map = const {},
-  ]) : super(map);
+  InMemoryKeyValueStore([super.map]);
 
   @override
   @nonVirtual
