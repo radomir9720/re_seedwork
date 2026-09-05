@@ -1,118 +1,83 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:re_seedwork/src/stores/base_store.dart';
 
-/// ReadOnlyValueStore
-abstract class ReadOnlyValueStore<T> implements BaseStore<T> {
-  /// The current store value.
-  T get data;
+/// {@template state.StoreBase}
+/// An interface for the core functionality implemented by stores.
+/// {@endtemplate}
+abstract class StoreBase<T> implements StateStreamableSource<T> {
+  /// Whether this storage is persistent or not.
+  bool get isPersistent;
+
+  @override
+  Future<void> close();
 }
 
-/// ValueStore
-abstract class ValueStore<T> implements ReadOnlyValueStore<T> {
-  /// Updates the state value.
-  Future<bool> put(T value);
+/// {@template state.ValueStoreSink}
+/// A base interface for single value streamable store.
+/// {@endtemplate}
+abstract class ValueStoreSink<T> implements StoreBase<T> {
+  /// Updates store state.
+  Future<void> put(final T state);
 }
 
-/// ValueStoreSink
-abstract class ValueStoreSink<T> extends Stream<T>
-    implements Sink<T>, ValueStore<T> {
+/// {@template state.InMemoryValueStore}
+/// A simple in-memory implementation of the [ValueStoreSink].
+/// {@endtemplate}
+class InMemoryValueStore<T> implements ValueStoreSink<T>, Sink<T> {
   @protected
   @nonVirtual
-  late T _value;
+  T _state;
 
-  @protected
   @nonVirtual
   @visibleForTesting
   final StreamController<T> controller;
 
-  ValueStoreSink(
-    T value,
-  ) : controller = StreamController.broadcast() {
-    _value = value;
+  /// {@macro state.InMemoryValueStore}
+  InMemoryValueStore(
+    this._state,
+  ) : controller = StreamController.broadcast();
+
+  @override
+  T get state {
+    return _state;
   }
 
   @override
-  @nonVirtual
-  T get data {
-    return _value;
+  Stream<T> get stream {
+    return controller.stream;
   }
 
   @override
-  @protected
-  @nonVirtual
-  bool add(T value) {
-    if (controller.isClosed) {
-      return false;
-    }
-
-    _value = value;
-    controller.add(_value);
-
-    return true;
+  bool get isPersistent {
+    return false;
   }
 
   @override
-  @nonVirtual
-  bool get isBroadcast {
-    return controller.stream.isBroadcast;
-  }
-
-  @override
-  @nonVirtual
-  StreamSubscription<T> listen(
-    void Function(T value)? onData, {
-    Function? onError,
-    bool? cancelOnError,
-    void Function()? onDone,
-  }) {
-    return controller.stream.listen(
-      onData,
-      onDone: onDone,
-      onError: onError,
-      cancelOnError: cancelOnError,
-    );
-  }
-
-  @override
-  @nonVirtual
-  Stream<T> asBroadcastStream({
-    void Function(StreamSubscription<T> subscription)? onListen,
-    void Function(StreamSubscription<T> subscription)? onCancel,
-  }) {
-    return controller.stream.asBroadcastStream(
-      onListen: onListen,
-      onCancel: onCancel,
-    );
-  }
-
-  @override
-  @nonVirtual
   bool get isClosed {
     return controller.isClosed;
   }
 
   @override
   @mustCallSuper
+  Future<void> put(T state) async {
+    add(state);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  void add(T data) {
+    if (isClosed) return;
+    if (_state == data) return;
+
+    _state = data;
+    controller.add(data);
+  }
+
+  @override
   Future<void> close() {
     return controller.close();
-  }
-}
-
-/// InMemoryValueStore
-class InMemoryValueStore<T> extends ValueStoreSink<T> {
-  InMemoryValueStore(super.value);
-
-  @override
-  @nonVirtual
-  bool get isPersistent {
-    return false;
-  }
-
-  @override
-  @mustCallSuper
-  Future<bool> put(T value) async {
-    return add(value);
   }
 }

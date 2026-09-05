@@ -15,6 +15,12 @@ export 'src/bloc/effect_bloc_mixin.dart';
 export 'src/bloc/consumer_bloc_mixin.dart';
 export 'src/bloc/bloc_event_handler_mixin.dart';
 
+// collections
+export 'src/collections/entries.dart';
+export 'src/collections/list_view.dart';
+export 'src/collections/map_view.dart';
+export 'src/collections/set_view.dart';
+
 /// values
 export 'src/values/result.dart';
 export 'src/values/optional.dart';
@@ -22,10 +28,8 @@ export 'src/values/async_data.dart';
 export 'src/values/async_state.dart';
 
 /// stores
-export 'src/stores/base_store.dart';
 export 'src/stores/value_store.dart';
 export 'src/stores/key_value_store.dart';
-export 'src/stores/optional_value_store.dart';
 
 /// utils
 export 'src/utils/lock.dart';
