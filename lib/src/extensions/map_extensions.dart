@@ -31,3 +31,18 @@ extension MapParserExtension on Map<String, dynamic> {
     return value?.map(mapper).toList() ?? [];
   }
 }
+
+/// Extensions that apply to [Map] with a nullable value type.
+extension MapWhereNotNullExtension<K, V extends Object> on Map<K, V?> {
+  /// The non-`null` elements of this `Map`.
+  ///
+  /// Returns a new map which emits all the non-`null` elements of this map, in
+  /// their original order.
+  Map<K, V> whereNotNull() {
+    return {
+      for (final entry in entries)
+        // ignore: avoid-non-null-assertion, checked on null
+        if (entry.value != null) entry.key: entry.value!,
+    };
+  }
+}
